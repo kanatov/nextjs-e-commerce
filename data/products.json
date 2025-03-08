@@ -180,5 +180,8 @@
       "subscription_discount": 25,
       "subscription": true
     }
-  ]
+  ],
+  "tags": {
+    "tags": ["Chews", "Formula", "Shampoo", "Cat", "Dog"]
+  }
 }

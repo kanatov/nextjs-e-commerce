@@ -1,19 +1,18 @@
 import Link from "next/link";
-export default function Sidebar() {
+import { getAllTags } from "@/lib/data";
+
+export default async function Sidebar() {
+  const tags = await getAllTags();
   return (
-    <div className="w-32 border-2">
+    <nav className="w-32 border-2">
       <h6>Filter by</h6>
       <ul>
-        <li>
-          <Link href={"/products?tag=dog"}>Dog</Link>
-        </li>
-        <li>
-          <Link href={"/products?tag=cat"}>Cat</Link>
-        </li>
-        <li>
-          <Link href={"/products?tag=chews"}>Chews</Link>
-        </li>
+        {tags.map((tag) => (
+          <li key={tag}>
+            <Link href={`/products?tag=${tag}`}>{tag}</Link>
+          </li>
+        ))}
       </ul>
-    </div>
+    </nav>
   );
 }
