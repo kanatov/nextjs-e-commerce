@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "concurrently \"npm run start:server\" \"npm run dev:app\"",
+    "dev:app": "next dev --turbopack",
     "build": "next build",
     "start:server": "json-server --watch data/products.json --port 3010",
     "start:app": "next start",
