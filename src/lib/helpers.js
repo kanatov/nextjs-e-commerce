@@ -1,6 +1,6 @@
 // Generate URL from the parameters
-export function getUrlFromParams({ page = 1, tags = [] } = {}) {
-  console.log("Making URL with:", { page, tags });
+export function getUrlFromParams({ page = 1, tags = [], vendor = "" } = {}) {
+  console.log("Making URL with:", { page, tags, vendor });
   const params = new URLSearchParams();
 
   // Pagination
@@ -14,6 +14,10 @@ export function getUrlFromParams({ page = 1, tags = [] } = {}) {
   }
   if (Array.isArray(tags) && tags.length) {
     tags.forEach((tag) => params.append("tags", tag));
+  }
+  // Vendor
+  if (vendor) {
+    params.set("vendor", vendor);
   }
   const newParams = params.toString();
   return newParams ? `?${newParams}` : "";

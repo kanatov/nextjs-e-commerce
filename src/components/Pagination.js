@@ -1,4 +1,4 @@
-import NavLink from "@/components/NavLink";
+import FilterLink from "@/components/FilterLink";
 
 export default function Pagination({
   page = 1,
@@ -12,9 +12,9 @@ export default function Pagination({
   return (
     <div className="flex gap-4">
       {previous && (
-        <NavLink page={page - 1} tags={tags}>
+        <FilterLink page={page - 1} tags={tags}>
           Previous
-        </NavLink>
+        </FilterLink>
       )}
       {Array.from({ length: pages }, (_, i) =>
         page === i + 1 ? (
@@ -26,15 +26,15 @@ export default function Pagination({
             {i + 1}
           </button>
         ) : (
-          <NavLink key={i} page={i + 1} tags={tags} className="px-2">
+          <FilterLink key={i} page={i + 1} tags={tags} className="px-2">
             {i + 1}
-          </NavLink>
+          </FilterLink>
         )
       )}
       {next && (
-        <NavLink page={page + 1} tags={tags}>
+        <FilterLink page={page + 1} tags={tags}>
           Next
-        </NavLink>
+        </FilterLink>
       )}
     </div>
   );

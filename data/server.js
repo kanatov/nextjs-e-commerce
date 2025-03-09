@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const getProductsTags = require("./methods/getProductsTags");
 const getProducts = require("./methods/getProducts");
+const getProductsVendors = require("./methods/getProductsVendors");
 const app = express();
 app.use(cors());
 
@@ -16,6 +17,9 @@ console.log("Configured CAP:", CAP);
 // Get products
 app.get("/products/tags", (req, res) => {
   getProductsTags(req, res);
+});
+app.get("/products/vendors", (req, res) => {
+  getProductsVendors(req, res);
 });
 app.get("/products", (req, res) => {
   getProducts(req, res);

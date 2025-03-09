@@ -1,4 +1,5 @@
-import { getProducts } from "@/lib/data";
+import { notFound } from "next/navigation";
+import { getProducts, getAllVendors } from "@/lib/data";
 import Pagination from "@/components/Pagination";
 import Card from "@/components/Card";
 import { getFiltersFromParams } from "@/lib/helpers";
@@ -6,26 +7,48 @@ import { getFiltersFromParams } from "@/lib/helpers";
 export default async function Page(params) {
   // Not supporting categories yet
   const slug = await params.params;
-  if (slug?.category) {
-    throw new Error(`Invalid category: ${slug.category}`);
+  const vendors = await getAllVendors();
+
+  console.log("Page slug:", slug);
+
+  if (
+    slug?.vendor &&
+    (slug?.vendor.length > 1 || !vendors.includes(slug.vendor[0]))
+  ) {
+    notFound();
   }
+  const vendor = slug.vendor ? slug.vendor[0] : "";
 
   // Products and pagination
   const filters = await getFiltersFromParams(params);
   filters.path = "/products";
+  filters.vendor = vendor;
   const paginatedProducts = await getProducts(filters);
+
   const state = {
     ...paginatedProducts,
     ...filters,
+    vendor,
   };
 
   return (
-    <section className="ml-40 w-full">
-      {state.tags.length ? (
-        <h2>Filtering by: {state.tags.join(", ")}</h2>
-      ) : (
-        <h2>All products</h2>
-      )}
+    <section className="ml-40 w-full flex flex-col gap-4">
+      <h2>
+        {vendor && (
+          <>
+            <strong>Vendor: </strong>
+            {vendor},{" "}
+          </>
+        )}
+        {state.tags.length ? (
+          <>
+            <strong>Filtering by:</strong> {state.tags.join(", ")}
+          </>
+        ) : (
+          <strong>All products</strong>
+        )}
+      </h2>
+      <hr className="opacity-45" />
       {state.products?.length > 0 ? (
         <>
           <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(400px,1fr))] w-full mb-8">
