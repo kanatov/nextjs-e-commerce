@@ -3,6 +3,7 @@ import { getProducts, getAllVendors } from "@/lib/data";
 import Pagination from "@/components/Pagination";
 import Card from "@/components/Card";
 import { getFiltersFromParams } from "@/lib/helpers";
+import NavLink from "@/components/NavLink";
 
 export default async function Page(params) {
   // Not supporting categories yet
@@ -51,7 +52,7 @@ export default async function Page(params) {
       <hr className="opacity-45" />
       {state.products?.length > 0 ? (
         <>
-          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(400px,1fr))] w-full mb-8">
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] w-full mb-8">
             {state.products.map((product) => (
               <Card key={product.id} {...product} />
             ))}
@@ -59,7 +60,12 @@ export default async function Page(params) {
           {state?.pages > 1 && <Pagination {...state} />}
         </>
       ) : (
-        <p>No products found</p>
+        <>
+          <p>No products found</p>
+          <NavLink href="/products" className="flex-0 w-fit">
+            Reset filters
+          </NavLink>
+        </>
       )}
     </section>
   );

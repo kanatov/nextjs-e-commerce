@@ -1,4 +1,4 @@
-import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 export default function Card({
   id,
   image_src,
@@ -16,9 +16,7 @@ export default function Card({
 }) {
   return (
     <div key={id} className="p-4 border-gray-400 border-b-2">
-      <p>
-        <img width={400} height={400} src={image_src} alt={title} />
-      </p>
+      <DynamicImage src={image_src} alt={title} width={400} height={400} />
       <p>
         <strong>ID:</strong> {id}
       </p>

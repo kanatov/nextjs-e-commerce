@@ -5,15 +5,17 @@ function getProducts(req, res) {
   const page = parseInt(req.query?.page) || 1;
   const tags = req.query?.tags ? req.query.tags : [];
   const vendor = req.query?.vendor ? req.query.vendor : "";
+  const price = parseFloat(req.query?.price) || Infinity;
   const tagsArray = Array.isArray(tags) ? tags : [tags];
-  console.log("GET /products", { page, tagsArray, vendor });
+  console.log("GET /products", { page, tagsArray, vendor, price });
 
   const filteredProducts = products.filter((product) => {
     if (tagsArray.length) {
       const containsTag = tagsArray.every((tag) => product.tags.includes(tag));
       if (!containsTag) return false;
     }
-    if (vendor) return product.vendor === vendor;
+    if (vendor && product.vendor !== vendor) return false;
+    if (Math.floor(product.price) > price) return false;
     return true;
   });
 
@@ -27,6 +29,7 @@ function getProducts(req, res) {
 
   const next = page < pages;
   const previous = page > 1;
+
   const response = {
     totalCount: filteredProducts.length,
     page,
@@ -38,8 +41,6 @@ function getProducts(req, res) {
   };
   console.log("GET /products", response);
 
-  // Adding extra information to the response
-  // It's a common pattern to return pagination information
   res.json(response);
 }
 

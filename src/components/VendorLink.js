@@ -1,10 +1,10 @@
 "use client";
-import Link from "next/link";
+import NavLink from "@/components/NavLink";
 import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { getUrlFromParams } from "@/lib/helpers";
 
-export default function VendorLink({ children, vendor, page, className }) {
+export default function VendorLink({ children, vendor, page }) {
   const searchParams = useSearchParams();
   const currentTags = searchParams.get("tags");
   const currentVendors = usePathname().split("/");
@@ -18,14 +18,15 @@ export default function VendorLink({ children, vendor, page, className }) {
   });
 
   return (
-    <Link
-      className={`${className} p-1 ${isActive ? "font-bold bg-gray-300" : ""}`}
+    <NavLink
+      className="text-left"
       href={`/${pathname}/${vendor}${getUrlFromParams({
         page,
         tags: currentTags,
       })}`}
+      isActive={isActive}
     >
       {children}
-    </Link>
+    </NavLink>
   );
 }

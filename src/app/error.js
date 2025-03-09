@@ -1,14 +1,14 @@
 "use client";
-import Link from "next/link";
+import NavLink from "@/components/NavLink";
 export default function ErrorPage({ error }) {
   return (
-    <section className="border-2 m-auto p-4 text-center w-96">
+    <section className="border-2 m-8 p-8 text-center w-full">
       <h1>Ups!</h1>
       <p>Something went wrong:</p>
-      <pre className="border-2 border-gray-400 p-4 m-4">
+      <pre className="border-2 border-gray-400 p-4 mx-auto break-all whitespace-pre-wrap">
         {JSON.stringify(error.message, null, 2)}
       </pre>
-      <Link href="/">Go back to home page</Link>
+      <NavLink href="/">Back to home page</NavLink>
     </section>
   );
 }

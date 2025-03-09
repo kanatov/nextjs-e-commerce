@@ -7,6 +7,7 @@ export async function getProducts({
   page = 1,
   tags = [],
   vendor = "",
+  price = 0,
 } = {}) {
   // Validate the input
   if (typeof page !== "number" || page < 1) {
@@ -16,7 +17,12 @@ export async function getProducts({
     throw new Error("Invalid tags");
   }
 
-  const uri = `${env.api}${path}${getUrlFromParams({ page, tags, vendor })}`;
+  const uri = `${env.api}${path}${getUrlFromParams({
+    page,
+    tags,
+    vendor,
+    price,
+  })}`;
   // Adding pagination information
   // It's a common pattern to return pagination information
   // such as total number of items, current page, total pages, etc.
@@ -50,6 +56,7 @@ export async function getAllTags() {
     throw new Error(error);
   }
 }
+
 // Get all vendors
 export async function getAllVendors() {
   try {
@@ -62,6 +69,18 @@ export async function getAllVendors() {
     return vendors.sort();
   } catch (error) {
     console.error("Can't fetch products vendors");
+    throw new Error(error);
+  }
+}
+
+// Get all price range
+export async function getPriceRange() {
+  try {
+    const data = await fetch(`${env.api}/products/price-range`);
+    const priceRangeData = await data.json();
+    return priceRangeData;
+  } catch (error) {
+    console.error("Can't fetch price range");
     throw new Error(error);
   }
 }
