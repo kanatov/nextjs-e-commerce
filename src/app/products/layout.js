@@ -1,9 +1,9 @@
 import Sidebar from "@/components/Sidebar";
 export default function Layout({ store }) {
   return (
-    <main className="flex ">
+    <>
       <Sidebar />
-      {store}
-    </main>
+      <main className="flex gap-8 flex-1 px-8 pb-16">{store}</main>
+    </>
   );
 }
