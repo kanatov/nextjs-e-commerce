@@ -48,7 +48,7 @@ export default function Card({
         <strong>SKU:</strong> {sku}
       </p>
       <p>
-        <strong>Price:</strong> ${price}
+        <strong>Price:</strong> £{price}
       </p>
       <p>
         <strong>Subscription Discount:</strong> {subscription_discount}%

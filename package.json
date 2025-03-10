@@ -9,7 +9,7 @@
     "build": "next build",
     "start:server": "node data/server.js",
     "start:app": "next start",
-    "start": "concurrently \"npm run start:server\" \"npm run start:app\"",
+    "start": "npm run build && concurrently \"npm run start:server\" \"npm run start:app\"",
     "lint": "next lint",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
   },

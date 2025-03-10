@@ -2,31 +2,32 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
+function onChange(router, value, max) {
+  const url = new URL(window.location);
+  if (value === max) {
+    url.searchParams.delete("price");
+  } else {
+    url.searchParams.set("price", value);
+  }
+  router.push(url.toString(), { shallow: true });
+}
+
 export default function InputRange({ min, max }) {
   const router = useRouter();
+
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const [value, setValue] = useState(max);
 
-  const onChange = () => {
-    const url = new URL(window.location);
-    if (value === max) {
-      url.searchParams.delete("price");
-    } else {
-      url.searchParams.set("price", value);
-    }
-    router.push(url.toString(), { shallow: true });
-  };
-
   useEffect(() => {
     const handler = setTimeout(() => {
-      onChange(value);
+      onChange(router, value, max);
     }, 300);
 
     return () => {
       clearTimeout(handler);
     };
-  }, [value, onChange]);
+  }, [value, max, router]);
 
   useEffect(() => {
     const url = new URL(window.location);
@@ -43,7 +44,7 @@ export default function InputRange({ min, max }) {
     if (!price) {
       setValue(max);
     }
-  }, [url]);
+  }, [url, max]);
 
   const handleChange = (event) => {
     setValue(Number(event.target.value));
