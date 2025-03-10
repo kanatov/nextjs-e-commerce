@@ -5,7 +5,6 @@ export function getUrlFromParams({
   vendor = "",
   price = 0,
 } = {}) {
-  console.log("Making URL with:", { page, tags, vendor });
   const params = new URLSearchParams();
 
   // Pagination
@@ -44,6 +43,6 @@ export async function getFiltersFromParams(params) {
     tags: Array.isArray(tags) ? tags : [tags],
     price,
   };
-  console.log("Filters from params:", filters);
+  // console.info("> Filters from params:", filters);
   return filters;
 }

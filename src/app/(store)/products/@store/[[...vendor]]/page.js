@@ -6,11 +6,8 @@ import { getFiltersFromParams } from "@/lib/helpers";
 import NavLink from "@/components/NavLink";
 
 export default async function Page(params) {
-  // Not supporting categories yet
   const slug = await params.params;
   const vendors = await getAllVendors();
-
-  console.log("Page slug:", slug);
 
   if (
     slug?.vendor &&
@@ -33,7 +30,7 @@ export default async function Page(params) {
   };
 
   return (
-    <section className="ml-40 w-full flex flex-col gap-4">
+    <section id="store" className="ml-40 w-full flex flex-col gap-4">
       <h2>
         {vendor && (
           <>
@@ -52,7 +49,10 @@ export default async function Page(params) {
       <hr className="opacity-45" />
       {state.products?.length > 0 ? (
         <>
-          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] w-full mb-8">
+          <div
+            id="products"
+            className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] w-full mb-8"
+          >
             {state.products.map((product) => (
               <Card key={product.id} {...product} />
             ))}

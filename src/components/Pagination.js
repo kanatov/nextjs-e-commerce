@@ -7,10 +7,8 @@ export default function Pagination({
   next = null,
   tags = [],
 }) {
-  console.log("pagination", { page, pages, previous, next, tags });
-
   return (
-    <div className="flex gap-4 justify-start">
+    <div id="productsPagination" className="flex gap-4 justify-start">
       {previous && (
         <FilterLink page={page - 1} tags={tags}>
           Previous

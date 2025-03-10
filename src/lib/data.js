@@ -29,11 +29,11 @@ export async function getProducts({
   // unfortunately json-server doesn't provide that information in this version
 
   // Fetch the data
-  console.info("> Trying to get products from:", uri);
+  // console.info("> Trying to get products from:", uri);
   try {
     const data = await fetch(uri);
     const products = await data.json();
-    console.info("> Received products:", products);
+    // console.info("> Received products:", products.length);
     return products;
   } catch (error) {
     console.error("Can't fetch products");

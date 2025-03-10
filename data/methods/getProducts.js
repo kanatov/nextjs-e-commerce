@@ -7,7 +7,7 @@ function getProducts(req, res) {
   const vendor = req.query?.vendor ? req.query.vendor : "";
   const price = parseFloat(req.query?.price) || Infinity;
   const tagsArray = Array.isArray(tags) ? tags : [tags];
-  console.log("GET /products", { page, tagsArray, vendor, price });
+  // console.info("> GET /products", { page, tagsArray, vendor, price });
 
   const filteredProducts = products.filter((product) => {
     if (tagsArray.length) {
@@ -39,7 +39,11 @@ function getProducts(req, res) {
     perPage: CAP,
     products: paginatedProducts,
   };
-  console.log("GET /products", response);
+  /*
+  console.info("> GET /products", {
+    ...response,
+    products: response.products.length,
+  });*/
 
   res.json(response);
 }

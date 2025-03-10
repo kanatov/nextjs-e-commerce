@@ -1,7 +1,7 @@
 const products = require("../products.js");
 
 function getProductsPriceRange(req, res) {
-  console.log("GET /products/price-range");
+  // console.info("GET /products/price-range");
   let min = Infinity,
     max = 0;
   products.forEach((product) => {

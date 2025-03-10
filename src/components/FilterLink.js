@@ -23,17 +23,9 @@ export default function FilterLink({ children, vendor, page, tag, className }) {
       ? [searchParams.get("tags")]
       : searchParams.get("tags");
   const price = searchParams.get("price");
-  const currentVendors = usePathname().split("/");
+  const currentVendors = usePathname().split("/")[3];
   const pathname = usePathname();
   const isActive = currentTags?.includes(tag);
-  console.log("FilterLink", {
-    currentTags,
-    vendor,
-    currentVendors,
-    tag,
-    isActive,
-    price,
-  });
 
   return (
     <NavLink
@@ -41,7 +33,7 @@ export default function FilterLink({ children, vendor, page, tag, className }) {
       href={`${pathname}${getUrlFromParams({
         page,
         tags: tag ? [tag] : currentTags,
-        vendor: currentTags,
+        ...(currentVendors && { vendor: currentVendors }),
         price,
       })}`}
       isActive={isActive}

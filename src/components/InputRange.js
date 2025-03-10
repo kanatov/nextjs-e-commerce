@@ -15,7 +15,6 @@ export default function InputRange({ min, max }) {
     } else {
       url.searchParams.set("price", value);
     }
-    console.log("onChange", url.toString());
     router.push(url.toString(), { shallow: true });
   };
 
@@ -54,6 +53,7 @@ export default function InputRange({ min, max }) {
     <div className="grid gap-2 grid-cols-2">
       <p className="col-span-2">Value: {value}</p>
       <input
+        id="filterPrice"
         className="col-span-2"
         type="range"
         min={min}

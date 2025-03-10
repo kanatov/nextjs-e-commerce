@@ -10,7 +10,8 @@
     "start:server": "node data/server.js",
     "start:app": "next start",
     "start": "concurrently \"npm run start:server\" \"npm run start:app\"",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
   },
   "dependencies": {
     "concurrently": "^9.1.2",
@@ -25,6 +26,8 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "9.22.0",
     "eslint-config-next": "15.2.1",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "start-server-and-test": "1.15.2",
+    "cypress": "12.3.0"
   }
 }

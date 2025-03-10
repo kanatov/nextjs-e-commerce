@@ -10,13 +10,6 @@ export default function VendorLink({ children, vendor, page }) {
   const currentVendors = usePathname().split("/");
   const pathname = currentVendors[1];
   const isActive = currentVendors?.includes(vendor);
-  console.log("VendorLink", {
-    currentTags,
-    vendor,
-    currentVendors,
-    isActive,
-  });
-
   return (
     <NavLink
       className="text-left"

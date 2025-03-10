@@ -8,6 +8,6 @@ try {
 } catch (error) {
   console.error("Error loading products:", error);
 }
-console.info("Loaded products:", products?.length);
+// console.info("> Loaded products:", products?.length);
 
 module.exports = products;
