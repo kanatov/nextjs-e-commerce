@@ -23,13 +23,13 @@ The most time-consuming and challenging task was handling the filters, as it req
 
 | **Products**              | **Pagination**        |
 | ------------------------- | --------------------- |
-| [IMAGE]                   | [IMAGE]               |
+| ![Screen Shot 2025-03-10 at 18 21 04](https://github.com/user-attachments/assets/d213e680-2f12-4873-a89c-a30311c8697e) | ![Screen Shot 2025-03-10 at 18 21 48](https://github.com/user-attachments/assets/1170159e-d7be-4c01-ab39-936219ac9dfb) |
 | **Products with filters** | **No products found** |
-| [IMAGE]                   | [IMAGE]               |
+| ![Screen Shot 2025-03-10 at 18 21 27](https://github.com/user-attachments/assets/f2c16b9c-a3e9-469d-bd45-a50d9e8e56f7) | ![Screen Shot 2025-03-10 at 17 50 59](https://github.com/user-attachments/assets/61cb3944-5a6f-4d0d-89fa-9b88d24f2317) |
 | **Vendor not found**      | **Page not found**    |
-| [IMAGE]                   | [IMAGE]               |
+| ![Screen Shot 2025-03-10 at 17 50 28](https://github.com/user-attachments/assets/895c0306-58d2-461e-8a71-10668f2564e0) | ![Screen Shot 2025-03-10 at 17 50 38](https://github.com/user-attachments/assets/063ee671-cb6c-41bc-a2d0-e94dc4bb6310) |
 | **Error**                 |                       |
-| [IMAGE]                   |                       |
+| ![Screen Shot 2025-03-10 at 17 59 49](https://github.com/user-attachments/assets/7e61cc6c-b932-434d-9caf-e6570c2e356e) |                       |
 
 ## How to Run the Project
 
@@ -56,7 +56,7 @@ While this task could be implemented as an SPA, I thought it would be better to 
 
 I've assumed the products page wouldn't be the main page of the website, so I placed it at `/products`. From this point, I had to set up the Next.js routing structure.
 
-[IMAGE]
+<img src="https://github.com/user-attachments/assets/117c7acd-1607-4ab6-967b-4874415f385f" width="400"/>
 
 To display this page, I've used:
 
@@ -200,6 +200,11 @@ As well as navigation cases:
 - URL changes after interacting with filters
 - Filters narrowing results or returning no products
 - Pagination
+
+![SCR-20250310-nvtg](https://github.com/user-attachments/assets/86b004c0-da2d-498a-b85e-7f4d1eec9164)
+
+![SCR-20250310-nvvi](https://github.com/user-attachments/assets/f7831bbe-56f2-407f-b06f-2ae5a2d09c49)
+
 
 ### Backlog
 
