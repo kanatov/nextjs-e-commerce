@@ -82,6 +82,8 @@ With this in mind, I chose the address bar as a _source of truth_ for the produc
 
 If I were to do this again, I would try a combined approach. I'd like to see how having a URL change event listener would work with a global context and what benefits it might bring.
 
+Navigation buttons are the only `client` components as they need to match the url with their props to decide if they are active or not.
+
 #### URL Structure
 
 The URL represents the current state of the filters and allows users to copy and send it to others or save it for later.
@@ -126,7 +128,7 @@ Response:
 
 ```json
 {
-"tags": ["one", "two", "three", ... ]
+  "tags": ["one", "two", "three", "..." ]
 }
 ```
 
@@ -138,9 +140,8 @@ Response:
 
 ```json
 {
-"vendors": ['one', 'two', three, ... ]
+  "vendors": ["one", "two", "three", "..." ]
 }
-
 ```
 
 #### `GET /products/price-range`
@@ -180,9 +181,8 @@ Response:
   "previous": false,
   "next": true,
   "perPage": 12,
-  "products": [ ... ],
+  "products": [ {} ],
 }
-
 ```
 
 ### E2E Tests
@@ -208,7 +208,7 @@ As well as navigation cases:
 
 ### Backlog
 
-Unfortunately, I completely ran out of time solving the highest-priority challenges, so I had to leave some things behind:
+I completely ran out of time solving the highest-priority challenges, so I had to leave some things behind:
 
 - UI design and effects
 - Subscription filter, as there were other filters provided instead
